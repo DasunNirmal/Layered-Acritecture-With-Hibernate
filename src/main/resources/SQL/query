@@ -1,0 +1,8 @@
+use hibernate_with_ui;
+
+CREATE TABLE Student(
+    id int,
+    name varchar(20),
+    address varchar(30),
+    phone_number int
+);
