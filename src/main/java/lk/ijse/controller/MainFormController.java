@@ -26,6 +26,13 @@ public class MainFormController {
 
     StudentBO studentBO = (StudentBO) BOFactory.getBoFactory().grtBo(BOFactory.BOTypes.STUDENT);
 
+    void clearFields() {
+        txtID.setText("");
+        txtName.setText("");
+        txtAddress.setText("");
+        txtPhoneNumber.setText("");
+    }
+
     @FXML
     void btnSaveOnAction(ActionEvent event) {
         int id = Integer.parseInt(txtID.getText());
@@ -107,12 +114,5 @@ public class MainFormController {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    void clearFields() {
-        txtID.setText("");
-        txtName.setText("");
-        txtAddress.setText("");
-        txtPhoneNumber.setText("");
     }
 }
