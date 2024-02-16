@@ -12,6 +12,7 @@ public class StudentDAOImpl implements StudentDAO {
 
     Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
     Transaction transaction = session.beginTransaction();
+
     @Override
     public void save(Student dto) throws SQLException, ClassNotFoundException {
         /*return SQLUtil.execute("INSERT INTO Student VALUES(?,?,?,?)",
