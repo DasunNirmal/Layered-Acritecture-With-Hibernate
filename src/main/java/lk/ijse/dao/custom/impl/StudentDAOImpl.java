@@ -1,34 +1,42 @@
 package lk.ijse.dao.custom.impl;
 
-import lk.ijse.dao.SQLUtil;
+import lk.ijse.cofig.FactoryConfiguration;
 import lk.ijse.dao.custom.StudentDAO;
 import lk.ijse.entity.Student;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class StudentDAOImpl implements StudentDAO {
 
+    Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
+    Transaction transaction = session.beginTransaction();
     @Override
-    public boolean save(Student dto) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("INSERT INTO Student VALUES(?,?,?,?)",
-                dto.getId(),dto.getName(),dto.getAddress(),dto.getPhone_number());
+    public void save(Student dto) throws SQLException, ClassNotFoundException {
+        /*return SQLUtil.execute("INSERT INTO Student VALUES(?,?,?,?)",
+                dto.getId(),dto.getName(),dto.getAddress(),dto.getPhone_number());*/
+        session.save(dto);
+        transaction.commit();
+        session.close();
     }
 
     @Override
     public boolean update(Student dto) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("UPDATE Student SET name = ?,address = ?,phone_number = ? WHERE id = ?",dto.getName(),
-                dto.getAddress(),dto.getPhone_number(),dto.getId());
+        /*return SQLUtil.execute("UPDATE Student SET name = ?,address = ?,phone_number = ? WHERE id = ?",dto.getName(),
+                dto.getAddress(),dto.getPhone_number(),dto.getId());*/
+        return false;
     }
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("DELETE FROM Student WHERE id = ?",id);
+        /*return SQLUtil.execute("DELETE FROM Student WHERE id = ?",id);*/
+        return false;
     }
 
     @Override
     public Student search(String id) throws SQLException, ClassNotFoundException {
-        ResultSet resultSet = SQLUtil.execute("SELECT * FROM Student WHERE id = ?",id);
+        /*ResultSet resultSet = SQLUtil.execute("SELECT * FROM Student WHERE id = ?",id);
 
         Student entity = null;
         if (resultSet.next()) {
@@ -39,6 +47,7 @@ public class StudentDAOImpl implements StudentDAO {
 
             entity = new Student(Sid,name,address,phoneNumber);
         }
-        return entity;
+        return entity;*/
+        return null;
     }
 }
