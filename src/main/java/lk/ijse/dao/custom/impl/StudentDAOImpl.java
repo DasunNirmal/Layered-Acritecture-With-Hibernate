@@ -25,7 +25,10 @@ public class StudentDAOImpl implements StudentDAO {
     public boolean update(Student dto) throws SQLException, ClassNotFoundException {
         /*return SQLUtil.execute("UPDATE Student SET name = ?,address = ?,phone_number = ? WHERE id = ?",dto.getName(),
                 dto.getAddress(),dto.getPhone_number(),dto.getId());*/
-        return false;
+        session.update(dto);
+        transaction.commit();
+        session.close();
+        return true;
     }
 
     @Override
