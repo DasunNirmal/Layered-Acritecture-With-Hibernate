@@ -14,12 +14,11 @@ public class StudentDAOImpl implements StudentDAO {
     Transaction transaction = session.beginTransaction();
 
     @Override
-    public void save(Student dto) throws SQLException, ClassNotFoundException {
-        /*return SQLUtil.execute("INSERT INTO Student VALUES(?,?,?,?)",
-                dto.getId(),dto.getName(),dto.getAddress(),dto.getPhone_number());*/
+    public boolean save(Student dto) {
         session.save(dto);
         transaction.commit();
         session.close();
+        return true;
     }
 
     @Override
