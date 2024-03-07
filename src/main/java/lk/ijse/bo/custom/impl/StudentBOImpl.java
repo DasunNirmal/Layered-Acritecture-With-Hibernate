@@ -13,9 +13,8 @@ public class StudentBOImpl implements StudentBO {
     StudentDAO studentDAO = (StudentDAO) DAOFactory.getDaoFactory().getDao(DAOFactory.DAOTypes.STUDENT);
 
     @Override
-    public boolean save(StudentDto dto) throws SQLException, ClassNotFoundException {
-        studentDAO.save(new Student(dto.getId(), dto.getName(), dto.getAddress(), dto.getPhone_number()));
-        return true;
+    public boolean save(StudentDto dto) throws SQLException {
+           return studentDAO.save(new Student(dto.getId(), dto.getName(), dto.getAddress(), dto.getPhone_number()));
     }
 
     @Override
