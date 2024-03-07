@@ -25,8 +25,6 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public boolean update(Student dto) throws SQLException, ClassNotFoundException {
-        /*return SQLUtil.execute("UPDATE Student SET name = ?,address = ?,phone_number = ? WHERE id = ?",dto.getName(),
-                dto.getAddress(),dto.getPhone_number(),dto.getId());*/
         Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
         Transaction transaction = session.beginTransaction();
 
@@ -38,7 +36,6 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
-        /*return SQLUtil.execute("DELETE FROM Student WHERE id = ?",id);*/
         Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
         Transaction transaction = session.beginTransaction();
 
