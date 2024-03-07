@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public interface StudentBO extends SuperBO {
 
-    boolean save(StudentDto dto) throws SQLException, ClassNotFoundException;
+    boolean save(StudentDto dto) throws SQLException;
 
     boolean update(StudentDto dto) throws SQLException, ClassNotFoundException;
 
