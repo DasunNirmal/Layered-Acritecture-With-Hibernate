@@ -39,9 +39,7 @@ public class StudentDAOImpl implements StudentDAO {
         Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
         Transaction transaction = session.beginTransaction();
 
-        Query query = session.createQuery("DELETE FROM Student WHERE id = :id");
-        query.setParameter("id",id);
-        query.executeUpdate();
+        session.createNativeQuery("delete from Student where id='"+id+"'", Student.class).executeUpdate();
         transaction.commit();
         session.close();
         return true;
